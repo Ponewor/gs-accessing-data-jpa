@@ -1,0 +1,21 @@
+services:
+  bankapp:
+    build: complete/.
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./complete:/io
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: bank
+      MYSQL_USER: bank
+      MYSQL_PASSWORD: banksecret
+      MARIADB_DATABASE: bank
+      MARIADB_USER: bank
+      MARIADB_PASSWORD: banksecret
+      MARIADB_ROOT_PASSWORD: banksecret
+    ports:
+      - 3306:3306
